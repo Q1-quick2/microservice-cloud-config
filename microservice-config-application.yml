@@ -8,7 +8,6 @@ spring:
   profiles: dev
   application:
     name: microservice-config-dev
-    
 ---
 server:
   port: 4002
