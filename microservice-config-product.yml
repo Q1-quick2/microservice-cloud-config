@@ -1,0 +1,93 @@
+spring:
+  profiles:
+    active: dev # 激活开发环境配置
+---
+server:
+  port: 8001 #端口号
+mybatis:
+   config-location: classpath:mybatis/mybatis.cfg.xml # mybatis配置文件所在路径
+   type-aliases-package: com.meng.xuegu.sprincloud.entities # 所有Entity别名类所在包
+   mapper-locations: classpath:mybatis/mapper/**/*.xml # mapper映射文件
+spring:
+     profiles: dev # 开发环境
+     application:
+       name: microservice-product-config
+   datasource:
+     type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
+     driver-class-name: com.mysql.cj.jdbc.Driver # mysql驱动包
+     url: jdbc:mysql://127.0.0.1:3306/springcloud_db01?serverTimezone=GMT%2B8 # 数据 库名称
+     username: root
+     password: root
+     dbcp2:
+       min-idle: 5 # 数据库连接池的最小维持连接数
+       initial-size: 5 # 初始化连接数
+       max-total: 5 # 最大连接数
+       max-wait-millis: 150 # 等待连接获取的最大超时时间
+eureka:
+  client:
+    registerWithEureka: true #服务注册，是否将自己注册到Eureka服务中
+    fetchRegistry: true #服务发现，是否从Eureka中获取注册信息
+    serviceUrl:
+      defaultZone: http://localhost:6001/eureka
+  instance:
+    instanceId: ${spring.application.name}:${server.port}  #指定实例id就不会显示主机名
+    preferIpAddress: true
+---
+server:
+  port: 8001 #端口号
+mybatis:
+   config-location: classpath:mybatis/mybatis.cfg.xml # mybatis配置文件所在路径
+   type-aliases-package: com.meng.xuegu.sprincloud.entities # 所有Entity别名类所在包
+   mapper-locations: classpath:mybatis/mapper/**/*.xml # mapper映射文件
+spring:
+     profiles: prod # 开发环境
+     application:
+       name: microservice-product-config
+   datasource:
+     type: com.alibaba.druid.pool.DruidDataSource # 当前数据源操作类型
+     driver-class-name: com.mysql.cj.jdbc.Driver # mysql驱动包
+     url: jdbc:mysql://127.0.0.1:3306/springcloud_db01?serverTimezone=GMT%2B8 # 数据 库名称
+     username: root
+     password: root
+     dbcp2:
+       min-idle: 5 # 数据库连接池的最小维持连接数
+       initial-size: 5 # 初始化连接数
+       max-total: 5 # 最大连接数
+       max-wait-millis: 150 # 等待连接获取的最大超时时间
+eureka:
+  client:
+    registerWithEureka: true #服务注册，是否将自己注册到Eureka服务中
+    fetchRegistry: true #服务发现，是否从Eureka中获取注册信息
+    serviceUrl:
+      defaultZone: http://localhost:6001/eureka
+  instance:
+    instanceId: ${spring.application.name}:${server.port}  #指定实例id就不会显示主机名
+    preferIpAddress: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
